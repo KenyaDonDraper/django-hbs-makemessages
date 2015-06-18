@@ -220,7 +220,7 @@ class Command(BaseCommand):
     def cleanup_po_files(self, cdw, locales, tmp_js_files):
         strip_tokens = [js_file.path_suffix for js_file in tmp_js_files]
 
-        for po_file in cdw.walkfiles('djangojs.po'):
+        for po_file in cdw.walkfiles('djangojs.po', errors='warn'):
             if not locales or po_file.splitall()[-3] in locales:
                 self.cleanup_po_file(po_file, strip_tokens)
 
