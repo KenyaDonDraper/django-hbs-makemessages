@@ -213,7 +213,7 @@ class Command(BaseCommand):
     def prepare_tmp_js_files(self, cdw=None):
         files = []
         for extension in self.JS_TEMPLATES:
-            for hbs_file in cdw.walkfiles('*' + extension):
+            for hbs_file in cdw.walkfiles('*' + extension, errors='warn'):
                 files.append(HandlebarsFile(hbs_file))
         return files
 
